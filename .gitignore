@@ -42,3 +42,7 @@ next-env.d.ts
 
 # local screenshots (from scripts/screenshot.mjs)
 /.screenshots/
+
+# claude code — contains tokens / local-only config
+/.claude/
+/.mcp.json

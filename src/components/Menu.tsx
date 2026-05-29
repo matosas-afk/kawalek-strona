@@ -173,14 +173,14 @@ export default function Menu() {
                         className="inline-block w-3 h-3 rounded-full bg-[#3D2817]"
                         aria-hidden="true"
                       />
-                      Lody śmietankowe
+                      <span>Lody śmietankowe</span>
                     </span>
                     <span className="inline-flex items-center gap-1.5">
                       <span
                         className="inline-block w-3 h-3 rounded-full bg-[#C9956B]"
                         aria-hidden="true"
                       />
-                      Sorbety
+                      <span>Sorbety</span>
                     </span>
                   </div>
                 )}

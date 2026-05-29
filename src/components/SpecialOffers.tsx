@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function SpecialOffers() {
   return (
     <section
@@ -39,7 +41,21 @@ export default function SpecialOffers() {
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {/* LEFT — Seniors */}
-          <article className="flex flex-col items-center text-center bg-[#2A1A0E]/40 backdrop-blur-sm rounded-2xl p-8 sm:p-10 border border-[#C9956B]/20">
+          <article className="relative overflow-hidden flex flex-col items-center text-center rounded-2xl p-8 sm:p-10 border border-[#C9956B]/20">
+            {/* Photo background */}
+            <Image
+              src="/images/backgrounds/kawa-ciasto-background.png"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover -z-10"
+            />
+            {/* Brown scrim for text legibility */}
+            <div
+              className="absolute inset-0 -z-10 bg-gradient-to-b from-[#2A1A0E]/85 via-[#2A1A0E]/70 to-[#2A1A0E]/90"
+              aria-hidden="true"
+            />
+
             <div className="inline-block bg-[#C9956B] text-[#FDF8F4] text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full mb-6">
               Środy dla Seniorów
             </div>
@@ -77,7 +93,21 @@ export default function SpecialOffers() {
           </article>
 
           {/* RIGHT — Thursday donuts */}
-          <article className="flex flex-col items-center text-center bg-[#2A1A0E]/40 backdrop-blur-sm rounded-2xl p-8 sm:p-10 border border-[#C9956B]/20">
+          <article className="relative overflow-hidden flex flex-col items-center text-center rounded-2xl p-8 sm:p-10 border border-[#C9956B]/20">
+            {/* Photo background */}
+            <Image
+              src="/images/backgrounds/czwartek-paczki-background.png"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover -z-10"
+            />
+            {/* Brown scrim for text legibility */}
+            <div
+              className="absolute inset-0 -z-10 bg-gradient-to-b from-[#2A1A0E]/85 via-[#2A1A0E]/70 to-[#2A1A0E]/90"
+              aria-hidden="true"
+            />
+
             <div className="inline-block bg-[#C9956B] text-[#FDF8F4] text-xs font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full mb-6">
               Czwartki z Pączkami
             </div>
@@ -95,7 +125,7 @@ export default function SpecialOffers() {
             <div className="my-6">
               <div className="bg-[#F5E6D3] rounded-2xl px-8 py-5 shadow-2xl">
                 <p className="font-serif text-3xl sm:text-4xl font-bold text-[#C9956B] leading-tight">
-                  Świeże
+                  <span>Świeże</span>
                   <span className="block text-xl text-[#6B3A1F] font-normal mt-1">
                     co czwartek
                   </span>

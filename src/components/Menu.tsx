@@ -6,12 +6,15 @@ import { useState } from "react";
 const tabs = ["Desery", "Lody", "Kawa i napoje"] as const;
 type Tab = (typeof tabs)[number];
 
+type Flavor = string | { name: string; type: "sorbet" };
+
 type TabData = {
   image?: string;
   imageAlt?: string;
   description: string;
-  flavors?: string[];
+  flavors?: Flavor[];
   flavorsNote?: string;
+  flavorsLegend?: boolean;
   priceList?: string;
 };
 
@@ -24,19 +27,27 @@ const menuData: Record<Tab, TabData> = {
   },
   Lody: {
     description:
-      "Lody wytwarzane na miejscu, z naturalnych składników i prawdziwych past owocowych. Smaki zmieniają się sezonowo — poniżej przykłady, które możesz u nas znaleźć:",
+      "Lody wytwarzane na miejscu, z naturalnych składników i prawdziwych past owocowych. Smaki zmieniają się sezonowo — poniżej aktualna rotacja:",
     flavors: [
-      "Sernik baskijski",
-      "Czekolada",
-      "Kinder Country",
-      "Śmietanka",
+      "Snickers",
+      "Bounty",
+      "Panna cotta",
+      "Budyń z marakują",
+      "Beza z malinami",
+      "Róża",
       "Słony karmel",
       "Pistacja",
-      "Sorbet lemoniadowy",
-      "Sorbet wiśniowy",
-      "Beza z malinami",
-      "Mleczna truskawka",
+      "Kinder Jajko",
+      "Kinder Bueno",
+      "Maxi King",
+      { name: "Sorbet mango", type: "sorbet" },
+      { name: "Sorbet lemoniada", type: "sorbet" },
+      { name: "Sorbet mohito", type: "sorbet" },
+      { name: "Sorbet arbuz", type: "sorbet" },
+      { name: "Sorbet truskawka", type: "sorbet" },
+      { name: "Sorbet malina", type: "sorbet" },
     ],
+    flavorsLegend: true,
     flavorsNote: "Smaki zmieniają się sezonowo — aktualną rotację znajdziesz na Facebooku.",
   },
   "Kawa i napoje": {
@@ -138,14 +149,41 @@ export default function Menu() {
 
             {current.flavors && (
               <div className="flex flex-wrap gap-2">
-                {current.flavors.map((flavor) => (
-                  <span
-                    key={flavor}
-                    className="bg-[#3D2817] text-[#F5E6D3] text-sm px-4 py-2 rounded-full"
-                  >
-                    {flavor}
-                  </span>
-                ))}
+                {current.flavors.map((flavor) => {
+                  const name = typeof flavor === "string" ? flavor : flavor.name;
+                  const isSorbet =
+                    typeof flavor === "object" && flavor.type === "sorbet";
+                  return (
+                    <span
+                      key={name}
+                      className={
+                        isSorbet
+                          ? "bg-[#C9956B] text-[#3D2817] text-sm px-4 py-2 rounded-full font-medium"
+                          : "bg-[#3D2817] text-[#F5E6D3] text-sm px-4 py-2 rounded-full"
+                      }
+                    >
+                      {name}
+                    </span>
+                  );
+                })}
+                {current.flavorsLegend && (
+                  <div className="w-full flex items-center gap-4 mt-2 text-xs text-[#6B3A1F]">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span
+                        className="inline-block w-3 h-3 rounded-full bg-[#3D2817]"
+                        aria-hidden="true"
+                      />
+                      Lody śmietankowe
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <span
+                        className="inline-block w-3 h-3 rounded-full bg-[#C9956B]"
+                        aria-hidden="true"
+                      />
+                      Sorbety
+                    </span>
+                  </div>
+                )}
                 {current.flavorsNote && (
                   <p className="w-full text-[#7A5C45] text-xs italic mt-1">
                     * {current.flavorsNote}

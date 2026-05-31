@@ -134,8 +134,7 @@ export default function SpecialOffers() {
             </div>
 
             <p className="text-[#F5E6D3]/90 text-base sm:text-lg leading-relaxed">
-              W każdy czwartek świeżutkie pączki oraz domowe wypieki drożdżowe —
-              prosto z piekarni Pani Kasi.
+              W każdy czwartek świeżutkie pączki oraz domowe wypieki drożdżowe.
             </p>
 
             <div className="flex items-center justify-center gap-3 mt-6">

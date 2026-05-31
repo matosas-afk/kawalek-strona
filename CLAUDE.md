@@ -16,9 +16,14 @@ Next.js website for Kawiarnia Kawałek (Zielonka). Single-page (App Router), cli
 ```bash
 npm run dev          # localhost:3000
 npm run build        # production build
+npm run start        # serve the production build (after npm run build)
 npm run lint         # eslint
 npm run optimize-images   # batch-optimize public/images/ via sharp (after adding new photos)
+npm run sonar        # local SonarCloud scan via docker (needs SONAR_TOKEN env var)
+node scripts/screenshot.mjs   # capture page screenshots via Playwright → .screenshots/
 ```
+
+> This subfolder (`kawalek-strona/`) is the git repository (remote: `matosas-afk/kawalek-strona`). The parent `Projekt Kawałek/` folder is not under version control — only an asset/source staging area.
 
 ## Project structure
 
@@ -93,6 +98,12 @@ claude mcp enable playwright
 ```
 
 Use cases worth enabling: client feedback iteration, responsive testing, post-deploy visual verification.
+
+## SonarCloud (code quality CI)
+
+- A GitHub Actions workflow (`.github/workflows/sonarcloud.yml`) runs a SonarCloud scan on every push to `main`/`master`/`feature/**` and on PRs. Config lives in `sonar-project.properties` (org `matosas-afk`, project `matosas-afk_kawalek-strona`; scans `src/` only).
+- `.mcp.json` also wires a `sonarqube` MCP server (dockerized, pointed at sonarcloud.io) for querying issues from within Claude.
+- **The Quality Gate is intentionally accepted-red — do not try to "fix" it to make it pass.**
 
 ## Preview deploys (Vercel)
 

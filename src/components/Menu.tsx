@@ -16,6 +16,8 @@ type TabData = {
   flavorsNote?: string;
   flavorsLegend?: boolean;
   priceList?: string;
+  posterImage?: string;
+  posterAlt?: string;
 };
 
 const menuData: Record<Tab, TabData> = {
@@ -51,8 +53,6 @@ const menuData: Record<Tab, TabData> = {
     flavorsNote: "Smaki zmieniają się sezonowo — aktualną rotację znajdziesz na Facebooku.",
   },
   "Kawa i napoje": {
-    image: "/images/drinks/kawa_cappuccino_potrojny.jpg",
-    imageAlt: "Cappuccino — kawiarnia Kawałek Zielonka",
     description:
       "Starannie parzona kawa z dobrej jakości ziaren, klasyczne pozycje oraz orzeźwiające napoje na ciepłe dni. Oferujemy też kawę mrożoną i bezalkoholowe drinki owocowe — idealne uzupełnienie deseru.",
     flavors: [
@@ -65,8 +65,10 @@ const menuData: Record<Tab, TabData> = {
       "Lemoniada",
       "Koktajl owocowy",
     ],
-    priceList:
-      "Espresso 5 / 10 zł · Americano 10 zł · Flat White / Latte / Cappuccino 14 zł · Opakowanie na wynos +1 zł · Syrop smakowy +1 zł",
+    posterImage: "/images/marketing/menu_kawa_cennik.jpg",
+    posterAlt:
+      "Cennik kawy — Espresso 5/10 zł, Americano 10 zł, Flat White, Latte i Cappuccino 14 zł, " +
+      "opakowanie na wynos +1 zł, syrop smakowy +1 zł — kawiarnia Kawałek",
   },
 };
 
@@ -200,6 +202,19 @@ export default function Menu() {
                 <p className="text-[#3D2817] text-sm leading-relaxed">
                   {current.priceList}
                 </p>
+              </div>
+            )}
+
+            {current.posterImage && (
+              <div className="mt-2 w-full rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src={current.posterImage}
+                  alt={current.posterAlt ?? ""}
+                  width={1536}
+                  height={1024}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 90vw, 768px"
+                />
               </div>
             )}
 

@@ -178,7 +178,7 @@ export default function TortySection() {
             className="inline-flex items-center justify-center gap-2 bg-[#3D2817] text-[#F5E6D3] px-7 py-4 rounded-full text-sm sm:text-base font-semibold shadow-md hover:bg-[#6B3A1F] transition-colors"
           >
             <span aria-hidden="true">📞</span>
-            Zamów tort — zadzwoń
+            <span>Zamów tort — zadzwoń</span>
           </a>
           <a
             href="https://www.facebook.com/profile.php?id=61586213099245"
@@ -187,7 +187,7 @@ export default function TortySection() {
             className="inline-flex items-center justify-center gap-2 bg-[#C9956B] text-[#FDF8F4] px-7 py-4 rounded-full text-sm sm:text-base font-semibold shadow-md hover:bg-[#6B3A1F] transition-colors"
           >
             <span aria-hidden="true">💬</span>
-            Napisz na Facebooku
+            <span>Napisz na Facebooku</span>
           </a>
         </div>
       </div>

@@ -14,22 +14,20 @@ export default function About() {
             Nasza historia
           </span>
           <h2 className="font-serif text-4xl sm:text-5xl text-[#3D2817] mt-3 mb-6 leading-tight">
-            Miejsce stworzone z serca
+            Miejsce, do którego chce się wracać
           </h2>
           <div className="space-y-4 text-[#6B3A1F] text-lg leading-relaxed">
             <p>
-              Kawiarnia Kawałek to przytulne miejsce w sercu Zielonki, gdzie rzemieślnicze
-              podejście do słodkości spotyka się z ciepłą, domową atmosferą. Każde ciasto
-              tworzone jest z pasją i troską — ze świeżych składników, bez
-              kompromisów.
+              Kawałek to przytulna kawiarnia w sercu Zielonki, gdzie dobra kawa
+              spotyka się z domowymi deserami i rzemieślniczymi lodami.
             </p>
             <p>
-              Oferujemy wyjątkowe lody rzemieślnicze, klasyczne desery z niespodziankami
-              oraz starannie parzoną kawę. Mamy też coś dla gości unikających cukru
-              i wegan — bo każdy zasługuje na chwilę słodyczy.
+              Tworzymy miejsce, w którym można zwolnić na chwilę, spotkać się z
+              bliskimi albo po prostu sprawić sobie małą przyjemność. Znajdziesz
+              u nas również opcje bez cukru i propozycje dla wegan.
             </p>
             <p className="italic text-[#C9956B] font-medium">
-              Zajrzyj, usiądź, poczuj się jak w domu. 🤍
+              Usiądź wygodnie i poczuj się jak u siebie. 🤍
             </p>
           </div>
 
@@ -38,8 +36,8 @@ export default function About() {
             {[
               { label: "Lody rzemieślnicze", icon: "🍦" },
               { label: "Opcje bez cukru", icon: "🌿" },
-              { label: "Przyjazne dla wegan", icon: "🫶" },
-              { label: "Można z pieskiem", icon: "🐾" },
+              { label: "Opcje dla wegan", icon: "🫶" },
+              { label: "Przyjazne dla pupili", icon: "🐾" },
             ].map(({ label, icon }) => (
               <div
                 key={label}
@@ -58,8 +56,8 @@ export default function About() {
         <div className="grid grid-cols-2 gap-3">
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-md">
             <Image
-              src="/images/K9.jpg"
-              alt="Beza Pavlova z kawą latte — kawiarnia Kawałek"
+              src="/images/drinks/lemoniada_mason_jar.jpg"
+              alt="Lemoniada w słoiku z cytryną, limonką, pomarańczą i miętą — kawiarnia Kawałek"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 40vw, 22vw"
@@ -67,8 +65,8 @@ export default function About() {
           </div>
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-md mt-6">
             <Image
-              src="/images/K4.jpg"
-              alt="Szarlotka z lodami — kawiarnia Kawałek Zielonka"
+              src="/images/desery_serduszka_w_pudelku.jpg"
+              alt="Desery w pudełku prezentowym — monoporcje w kształcie serduszek z truskawkami — kawiarnia Kawałek"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 40vw, 22vw"
@@ -85,8 +83,8 @@ export default function About() {
           </div>
           <div className="relative aspect-square rounded-2xl overflow-hidden shadow-md">
             <Image
-              src="/images/K5.jpg"
-              alt="Naleśniki z owocami i bitą śmietaną — kawiarnia Kawałek"
+              src="/images/K6.jpg"
+              alt="Czekoladowy fondant z lodami i świeżymi owocami — kawiarnia Kawałek"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 40vw, 22vw"

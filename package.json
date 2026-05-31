@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "sonar": "docker run --rm -e SONAR_TOKEN -v \"$PWD:/usr/src\" sonarsource/sonar-scanner-cli -Dsonar.token=$SONAR_TOKEN"
   },
   "dependencies": {
     "next": "16.2.4",

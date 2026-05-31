@@ -37,12 +37,14 @@ const reviews = [
   },
 ];
 
-function Stars({ count }: { count: number }) {
+const STAR_POSITIONS = ["first", "second", "third", "fourth", "fifth"] as const;
+
+function Stars({ count }: Readonly<{ count: number }>) {
   return (
     <div className="flex gap-1" aria-label={`Ocena: ${count} na 5 gwiazdek`}>
-      {Array.from({ length: count }).map((_, i) => (
+      {STAR_POSITIONS.slice(0, count).map((position) => (
         <svg
-          key={i}
+          key={position}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="#C9956B"

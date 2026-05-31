@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const images = [
   { src: "/images/K9.jpg", alt: "Beza Pavlova z kawą latte" },
-  { src: "/images/K4.jpg", alt: "Szarlotka z lodami" },
-  { src: "/images/K3.jpg", alt: "Gofry z bitą śmietaną i owocami" },
-  { src: "/images/K5.jpg", alt: "Naleśniki z owocami i bitą śmietaną" },
-  { src: "/images/K2.jpg", alt: "Pierogi na słodko z owocami" },
-  { src: "/images/K6.jpg", alt: "Lava cake z lodami i owocami" },
-  { src: "/images/K8.jpg", alt: "Lody rzemieślnicze — plansza smaków" },
-  { src: "/images/K1.jpg", alt: "Plakat środowych zniżek dla seniorów" },
+  { src: "/images/drinks/kawa_cappuccino_potrojny.jpg", alt: "Warstwowe cappuccino z mleczną pianką i kakao" },
+  { src: "/images/K4.jpg", alt: "Szarlotka z gałką lodów rzemieślniczych" },
+  { src: "/images/drinks/koktajl_tropikalny_pomaranczowy.jpg", alt: "Koktajl tropikalny z pomarańczą i miętą" },
+  { src: "/images/K2.jpg", alt: "Leniwe pierogi na słodko z owocami" },
+  { src: "/images/drinks/lemoniada_kieliszek.jpg", alt: "Lemoniada z truskawką, limonką i miętą" },
+  { src: "/images/cakes/occasion/baby_shower_oh_baby.jpg", alt: "Tort na baby shower z figurką misia" },
+  { src: "/images/cakes/birthday/tort_urodzinowy_morski_zolw.jpg", alt: "Tort urodzinowy z figurką żółwia morskiego" },
 ];
 
 export default function Gallery() {

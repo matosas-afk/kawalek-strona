@@ -10,8 +10,8 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/K00.jpg"
-          alt="Lava cake z lodami i owocami — kawiarnia Kawałek Zielonka"
+          src="/images/hero_witryna_deserow.jpg"
+          alt="Witryna pełna domowych deserów — beza Pavlova, sernik z truskawkami i makaroniki — kawiarnia Kawałek Zielonka"
           fill
           className="object-cover object-center"
           priority

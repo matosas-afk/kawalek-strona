@@ -25,7 +25,7 @@ const menuData: Record<Tab, TabData> = {
     image: "/images/K9.jpg",
     imageAlt: "Beza Pavlova z kawą latte — kawiarnia Kawałek",
     description:
-      "Nasze desery to rzemieślnicze wypieki tworzone codziennie przez Panią Kasię — ze świeżych składników, bez kompromisów. W ofercie znajdziesz m.in. bezy, szarlotki, lava cake, naleśniki, gofry czy pierogi na słodko, a także propozycje bez cukru i wegańskie. Menu zmienia się regularnie — zapraszamy po aktualne propozycje!",
+      "Nasze desery to rzemieślnicze wypieki przygotowywane ze świeżych składników, bez kompromisów. W ofercie znajdziesz m.in. bezy, szarlotki, lava cake, naleśniki, gofry czy pierogi na słodko, a także propozycje bez cukru i wegańskie. Menu zmienia się regularnie — zapraszamy po aktualne propozycje!",
   },
   Lody: {
     description:

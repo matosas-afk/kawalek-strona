@@ -29,7 +29,6 @@ export default function Navbar() {
             width={48}
             height={48}
             className="rounded-full object-contain"
-            priority
           />
           <span className="text-[#F5E6D3] font-serif text-xl font-bold hidden sm:block tracking-wide">
             Kawałek

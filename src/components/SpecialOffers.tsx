@@ -35,7 +35,7 @@ export default function SpecialOffers() {
             Oferty specjalne
           </span>
           <h2 className="font-serif text-4xl sm:text-5xl text-[#F5E6D3] mt-3 leading-tight">
-            Środy i Czwartki u Pani Kasi
+            Środy i Czwartki w Kawałku
           </h2>
         </div>
 

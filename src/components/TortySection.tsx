@@ -109,9 +109,23 @@ export default function TortySection() {
           <span className="text-[#C9956B] text-sm tracking-[0.3em] uppercase font-medium">
             Słodkie okazje
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl text-[#3D2817] mt-3 leading-tight">
-            Torty Pani Kasi
-          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-3">
+            <h2 className="font-serif text-4xl sm:text-5xl text-[#3D2817] leading-tight">
+              Torty u Kaśki
+            </h2>
+            <div
+              className="flex shrink-0 items-center justify-center w-40 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32"
+              aria-label="Logo drugiej firmy Kasi"
+            >
+              <Image
+                src="/images/logo-druga-firma.png"
+                alt="Logo drugiej firmy Kasi"
+                width={192}
+                height={96}
+                className="h-full w-auto object-contain"
+              />
+            </div>
+          </div>
           <p className="text-[#6B3A1F] text-base sm:text-lg mt-5 max-w-2xl mx-auto leading-relaxed">
             Każdy tort tworzony jest indywidualnie — pod konkretną okazję, gust i historię.
             Zobacz przykłady realizacji i napisz do nas, jeśli marzy Ci się coś podobnego.

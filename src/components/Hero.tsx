@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+// Tiny blurred preview of the hero photo (16px webp) — shown instantly while the
+// full image loads, so the section never paints blank (improves Speed Index).
+const HERO_BLUR =
+  "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAQCdASoQAAsABABoJbACdADpt16GAAD+grrMh0+I97V9GAaPE7Iv8kU7YapTVqY484g2uxBx17YqzL9/UJhRg8YXv4C/fO+4bSjjA8XoQhIYk3RyCRXWkh5/YfE3d8L2eXQA";
+
 export default function Hero() {
   return (
     <section
@@ -16,6 +21,9 @@ export default function Hero() {
           className="object-cover object-center"
           priority
           sizes="100vw"
+          quality={50}
+          placeholder="blur"
+          blurDataURL={HERO_BLUR}
         />
         {/* Dark warm overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#3D2817]/70 via-[#3D2817]/50 to-[#3D2817]/80" />

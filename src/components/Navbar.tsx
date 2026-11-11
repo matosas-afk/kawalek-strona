@@ -16,32 +16,38 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#3D2817]/95 backdrop-blur-sm shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#ECE6DC] shadow-xs">
       <nav
-        className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
+        className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between"
         aria-label="Nawigacja główna"
       >
         {/* Logo */}
-        <Link href="#hero" className="flex items-center gap-2 shrink-0">
+        <Link href="#hero" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo.png"
             alt="Kawiarnia Kawałek — logo"
-            width={48}
-            height={48}
-            className="rounded-full object-contain"
+            width={52}
+            height={52}
+            className="rounded-full object-contain drop-shadow-xs"
+            priority
           />
-          <span className="text-[#F5E6D3] font-serif text-xl font-bold hidden sm:block tracking-wide">
-            Kawałek
-          </span>
+          <div className="flex flex-col">
+            <span className="text-[#1C1917] font-serif text-2xl font-semibold tracking-wider">
+              Kawałek
+            </span>
+            <span className="text-[#8C6239] text-[10px] tracking-[0.22em] uppercase font-medium -mt-1">
+              Kawiarnia i Cukiernia
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav links */}
-        <ul className="hidden md:flex items-center gap-5 lg:gap-7">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
-                className="text-[#F5E6D3] hover:text-[#C9956B] transition-colors duration-200 font-medium text-sm tracking-wide"
+                className="text-[#57534E] hover:text-[#1C1917] transition-colors duration-200 font-medium text-sm tracking-wide"
               >
                 {label}
               </a>
@@ -52,13 +58,13 @@ export default function Navbar() {
         {/* CTA phone */}
         <a
           href="tel:509708434"
-          className="hidden md:inline-flex items-center gap-2 bg-[#C9956B] hover:bg-[#A8784F] text-[#FDF8F4] px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200"
+          className="hidden md:inline-flex items-center gap-2 bg-[#EFE4D6] hover:bg-[#E2D2BF] text-[#5C3D24] border border-[#D9C4AC] px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-4 h-4"
+            className="w-4 h-4 text-[#8C6239]"
             aria-hidden="true"
           >
             <path
@@ -72,7 +78,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-[#F5E6D3] p-2"
+          className="md:hidden text-[#1C1917] p-2"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Zamknij menu" : "Otwórz menu"}
           aria-expanded={open}
@@ -97,14 +103,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#3D2817] border-t border-[#6B3A1F] px-4 pb-4">
+        <div className="md:hidden bg-[#FAF7F2] border-t border-[#ECE6DC] px-4 pb-6 shadow-lg">
           <ul className="flex flex-col gap-1 pt-2">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <a
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-[#F5E6D3] hover:text-[#C9956B] font-medium transition-colors"
+                  className="block py-3 text-[#1C1917] hover:text-[#8C6239] font-medium border-b border-[#ECE6DC]/60 transition-colors"
                 >
                   {label}
                 </a>
@@ -113,7 +119,7 @@ export default function Navbar() {
             <li>
               <a
                 href="tel:509708434"
-                className="mt-2 flex items-center gap-2 bg-[#C9956B] text-[#FDF8F4] px-4 py-3 rounded-full text-sm font-semibold justify-center"
+                className="mt-4 flex items-center gap-2 bg-[#8C6239] text-[#FAF7F2] px-4 py-3.5 rounded-full text-sm font-semibold justify-center shadow-xs"
               >
                 Zadzwoń: 509 708 434
               </a>

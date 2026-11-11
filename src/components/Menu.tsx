@@ -3,100 +3,70 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const tabs = ["Desery", "Lody", "Kawa i napoje"] as const;
+const tabs = ["Witryna ciast", "Kawa i napary", "Lody rzemieślnicze"] as const;
 type Tab = (typeof tabs)[number];
 
-type Flavor = string | { name: string; type: "sorbet" };
-
-type TabData = {
-  image?: string;
-  imageAlt?: string;
-  description: string;
-  flavors?: Flavor[];
-  flavorsNote?: string;
-  flavorsLegend?: boolean;
-  priceList?: string;
-  posterImage?: string;
-  posterAlt?: string;
+type MenuItem = {
+  name: string;
+  desc: string;
+  tag?: string;
 };
 
-const menuData: Record<Tab, TabData> = {
-  Desery: {
-    image: "/images/K9.jpg",
-    imageAlt: "Beza Pavlova z kawą latte — kawiarnia Kawałek",
-    description:
-      "Nasze desery to rzemieślnicze wypieki przygotowywane ze świeżych składników, bez kompromisów. W ofercie znajdziesz m.in. bezy, szarlotki, lava cake, naleśniki, gofry czy pierogi na słodko, a także propozycje bez cukru i wegańskie. Menu zmienia się regularnie — zapraszamy po aktualne propozycje!",
-  },
-  Lody: {
-    description:
-      "Lody wytwarzane na miejscu, z naturalnych składników i prawdziwych past owocowych. Smaki zmieniają się sezonowo — poniżej aktualna rotacja:",
-    flavors: [
-      "Snickers",
-      "Bounty",
-      "Panna cotta",
-      "Budyń z marakują",
-      "Beza z malinami",
-      "Róża",
-      "Słony karmel",
-      "Pistacja",
-      "Kinder Jajko",
-      "Kinder Bueno",
-      "Maxi King",
-      { name: "Sorbet mango", type: "sorbet" },
-      { name: "Sorbet lemoniada", type: "sorbet" },
-      { name: "Sorbet mohito", type: "sorbet" },
-      { name: "Sorbet arbuz", type: "sorbet" },
-      { name: "Sorbet truskawka", type: "sorbet" },
-      { name: "Sorbet malina", type: "sorbet" },
-    ],
-    flavorsLegend: true,
-    flavorsNote: "Smaki zmieniają się sezonowo — aktualną rotację znajdziesz na Facebooku.",
-  },
-  "Kawa i napoje": {
-    description:
-      "Starannie parzona kawa z dobrej jakości ziaren, klasyczne pozycje oraz orzeźwiające napoje na ciepłe dni. Oferujemy też kawę mrożoną i bezalkoholowe drinki owocowe — idealne uzupełnienie deseru.",
-    flavors: [
-      "Espresso",
-      "Americano",
-      "Flat White",
-      "Latte",
-      "Cappuccino",
-      "Kawa mrożona",
-      "Lemoniada",
-      "Koktajl owocowy",
-    ],
-    posterImage: "/images/marketing/menu_kawa_cennik.jpg",
-    posterAlt:
-      "Cennik kawy — Espresso 5/10 zł, Americano 10 zł, Flat White, Latte i Cappuccino 14 zł, " +
-      "opakowanie na wynos +1 zł, syrop smakowy +1 zł — kawiarnia Kawałek",
-  },
-};
+const bakeryItems: MenuItem[] = [
+  { name: "Sernik pistacjowy", desc: "Puszysty, aksamitny sernik na kruchym maślanym spodzie z kremem z sycylijskiej pistacji.", tag: "Bestseller" },
+  { name: "Beza Pavlova z owocami", desc: "Chrupiąca z zewnątrz, piankowa w środku, z kremem mascarpone i świeżymi malinami/borówkami.", tag: "Klasyk" },
+  { name: "Autorskie monoporcje", desc: "Rzeźbione deserki w kształcie owoców lub serduszek z płynnym musem owocowym w środku.", tag: "Rzemiosło" },
+  { name: "Ciasta bez cukru / Keto", desc: "Codziennie w witrynie dostępne pozycje bez dodatku cukru oraz propozycje wegańskie.", tag: "Keto & Fit" },
+  { name: "Tarta cytrynowa z bezą", desc: "Kruchy spód, orzeźwiający krem cytrynowy i opalana beza włoska.", tag: "Sezonowe" },
+  { name: "Tradycyjna szarlotka", desc: "Kruche maślane ciasto, polskie jabłka z cynamonem i delikatna kruszonka.", tag: "Domowe" },
+];
+
+const coffeeItems: MenuItem[] = [
+  { name: "Espresso / Doppio", desc: "Klasyczne, intensywne espresso z wyselekcjonowanej mieszanki ziaren.", tag: "Kawa" },
+  { name: "Flat White & Cappuccino", desc: "Podwójne espresso z idealnie spienionym, aksamitnym mlekiem (dostępne też mleka roślinne).", tag: "Mleczna" },
+  { name: "Caffe Latte", desc: "Delikatna, wysoka kawa mleczna z możliwością dodania naturalnego syropu.", tag: "Klasyk" },
+  { name: "Zimowa herbata rozgrzewająca", desc: "Czarna herbata z plastrami pomarańczy, cytryną, świeżym imbirem, miodem i goździkami.", tag: "Zimowa" },
+  { name: "Gęsta gorąca czekolada", desc: "Prawdziwa czekolada podawana na gorąco z bitą śmietaną lub piankami.", tag: "Słodka" },
+  { name: "Napar imbirowo-rokitnikowy", desc: "Naturalny, witaminowy napar rozgrzewający ze świeżych składników.", tag: "Zdrowie" },
+];
+
+const iceCreamFlavors = [
+  "Prawdziwa Pistacja 100%",
+  "Słony Karmel z solą morską",
+  "Czekolada deserowa",
+  "Śmietanka z Zielonki",
+  "Kinder Bueno",
+  "Sorbet z malin",
+  "Sorbet mango-marakuja",
+  "Sorbet truskawkowy",
+];
 
 export default function Menu() {
-  const [active, setActive] = useState<Tab>("Desery");
-  const current = menuData[active];
-  const hasImage = Boolean(current.image);
+  const [active, setActive] = useState<Tab>("Witryna ciast");
 
   return (
     <section
       id="menu"
-      className="bg-[#F5E6D3] py-20 px-4 sm:px-6 scroll-mt-16"
-      aria-label="Menu kawiarni"
+      className="py-16 md:py-24 px-4 sm:px-6 bg-[#FAF7F2] border-t border-[#ECE6DC] scroll-mt-20"
+      aria-label="Menu kawiarni Kawałek"
     >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <span className="text-[#C9956B] text-sm tracking-[0.3em] uppercase font-medium">
-            Co oferujemy
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-[#8C6239] text-xs tracking-[0.25em] uppercase font-semibold block mb-2">
+            Rzemieślnicze smaki
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl text-[#3D2817] mt-3 leading-tight">
-            Nasze Menu
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C1917] font-semibold leading-tight">
+            Karta Słodkości & Kawy
           </h2>
+          <p className="text-[#57534E] text-base mt-3">
+            Wypieki przygotowujemy na bieżąco. Oferta witryny zmienia się codziennie w zależności od inspiracji Pani Kasi i sezonowych owoców.
+          </p>
         </div>
 
         {/* Tabs */}
         <div
-          className="flex flex-wrap justify-center gap-2 mb-10"
+          className="flex flex-wrap justify-center gap-2.5 mb-12"
           role="tablist"
           aria-label="Kategorie menu"
         >
@@ -108,10 +78,10 @@ export default function Menu() {
               aria-controls={`panel-${tab}`}
               id={`tab-${tab}`}
               onClick={() => setActive(tab)}
-              className={`px-5 py-3 rounded-full text-sm font-semibold transition-all duration-200 ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 active === tab
-                  ? "bg-[#3D2817] text-[#F5E6D3] shadow-md"
-                  : "bg-[#FDF8F4] text-[#6B3A1F] hover:bg-[#3D2817]/10"
+                  ? "bg-[#1C1917] text-[#FAF7F2] shadow-sm"
+                  : "bg-[#FFFFFF] text-[#57534E] border border-[#ECE6DC] hover:border-[#8C6239]"
               }`}
             >
               {tab}
@@ -119,114 +89,101 @@ export default function Menu() {
           ))}
         </div>
 
-        {/* Panel */}
-        <div
-          id={`panel-${active}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${active}`}
-          className={
-            hasImage
-              ? "grid md:grid-cols-2 gap-10 items-center"
-              : "max-w-3xl mx-auto"
-          }
-        >
-          {/* Image (hidden for tabs without image, e.g. Lody) */}
-          {hasImage && current.image && (
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src={current.image}
-                alt={current.imageAlt ?? ""}
-                fill
-                className="object-cover transition-all duration-300"
-                sizes="(max-width: 768px) 90vw, 45vw"
-              />
-            </div>
-          )}
-
-          {/* Description */}
-          <div className="flex flex-col gap-5">
-            <p className="text-[#3D2817] text-lg leading-relaxed">
-              {current.description}
-            </p>
-
-            {current.flavors && (
-              <div className="flex flex-wrap gap-2">
-                {current.flavors.map((flavor) => {
-                  const name = typeof flavor === "string" ? flavor : flavor.name;
-                  const isSorbet =
-                    typeof flavor === "object" && flavor.type === "sorbet";
-                  return (
-                    <span
-                      key={name}
-                      className={
-                        isSorbet
-                          ? "bg-[#C9956B] text-[#3D2817] text-sm px-4 py-2 rounded-full font-medium"
-                          : "bg-[#3D2817] text-[#F5E6D3] text-sm px-4 py-2 rounded-full"
-                      }
-                    >
-                      {name}
-                    </span>
-                  );
-                })}
-                {current.flavorsLegend && (
-                  <div className="w-full flex items-center gap-4 mt-2 text-xs text-[#6B3A1F]">
-                    <span className="inline-flex items-center gap-1.5">
-                      <span
-                        className="inline-block w-3 h-3 rounded-full bg-[#3D2817]"
-                        aria-hidden="true"
-                      />
-                      <span>Lody śmietankowe</span>
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <span
-                        className="inline-block w-3 h-3 rounded-full bg-[#C9956B]"
-                        aria-hidden="true"
-                      />
-                      <span>Sorbety</span>
-                    </span>
-                  </div>
-                )}
-                {current.flavorsNote && (
-                  <p className="w-full text-[#7A5C45] text-xs italic mt-1">
-                    * {current.flavorsNote}
+        {/* Tab Content: Bakery */}
+        {active === "Witryna ciast" && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {bakeryItems.map((item) => (
+              <div
+                key={item.name}
+                className="bg-[#FFFFFF] border border-[#ECE6DC] rounded-2xl p-6 flex flex-col justify-between hover:border-[#8C6239] transition-all duration-200 shadow-2xs"
+              >
+                <div>
+                  <span className="text-[10px] tracking-wider uppercase font-semibold text-[#8C6239] bg-[#EFE4D6] px-2.5 py-0.5 rounded-full inline-block mb-3">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-serif text-xl font-semibold text-[#1C1917] mb-2 leading-snug">
+                    {item.name}
+                  </h3>
+                  <p className="text-[#6B655F] text-sm leading-relaxed font-light">
+                    {item.desc}
                   </p>
-                )}
+                </div>
+                <div className="mt-5 pt-3 border-t border-[#F3ECE2] text-xs text-[#8C6239] font-medium">
+                  Dostępne w witrynie na wagę / porcje
+                </div>
               </div>
-            )}
+            ))}
+          </div>
+        )}
 
-            {current.priceList && (
-              <div className="mt-2 bg-[#FDF8F4] border border-[#C9956B]/30 rounded-xl px-5 py-4">
-                <p className="text-[#C9956B] text-xs tracking-widest uppercase font-medium mb-2">
-                  Cennik kawy
-                </p>
-                <p className="text-[#3D2817] text-sm leading-relaxed">
-                  {current.priceList}
-                </p>
+        {/* Tab Content: Coffee */}
+        {active === "Kawa i napary" && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {coffeeItems.map((item) => (
+              <div
+                key={item.name}
+                className="bg-[#FFFFFF] border border-[#ECE6DC] rounded-2xl p-6 flex flex-col justify-between hover:border-[#8C6239] transition-all duration-200 shadow-2xs"
+              >
+                <div>
+                  <span className="text-[10px] tracking-wider uppercase font-semibold text-[#8C6239] bg-[#EFE4D6] px-2.5 py-0.5 rounded-full inline-block mb-3">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-serif text-xl font-semibold text-[#1C1917] mb-2 leading-snug">
+                    {item.name}
+                  </h3>
+                  <p className="text-[#6B655F] text-sm leading-relaxed font-light">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="mt-5 pt-3 border-t border-[#F3ECE2] text-xs text-[#8C6239] font-medium">
+                  Na miejscu i na wynos
+                </div>
               </div>
-            )}
+            ))}
+          </div>
+        )}
 
-            {current.posterImage && (
-              <div className="mt-2 w-full rounded-2xl overflow-hidden shadow-lg">
-                <Image
-                  src={current.posterImage}
-                  alt={current.posterAlt ?? ""}
-                  width={1536}
-                  height={1024}
-                  className="w-full h-auto"
-                  sizes="(max-width: 768px) 90vw, 768px"
-                />
-              </div>
-            )}
+        {/* Tab Content: Ice Cream */}
+        {active === "Lody rzemieślnicze" && (
+          <div className="bg-[#FFFFFF] border border-[#ECE6DC] rounded-3xl p-8 sm:p-12 shadow-2xs">
+            <div className="max-w-2xl mx-auto text-center mb-8">
+              <span className="text-[10px] tracking-widest uppercase font-semibold text-[#8C6239] block mb-2">
+                Receptury rzemieślnicze
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#1C1917] font-semibold mb-3">
+                Lody tworzone na naturalnych pastach i owocach
+              </h3>
+              <p className="text-[#57534E] text-sm leading-relaxed">
+                Prawdziwa śmietanka, sycylijskie orzechy i 100% przecierów owocowych w sorbetach. Bez sztucznych barwników i zagęszczaczy.
+              </p>
+            </div>
 
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 max-w-3xl mx-auto">
+              {iceCreamFlavors.map((flavor) => (
+                <div
+                  key={flavor}
+                  className="p-3.5 rounded-xl bg-[#FAF7F2] border border-[#ECE6DC] text-center text-xs font-medium text-[#1C1917]"
+                >
+                  {flavor}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Facebook Update Note */}
+        <div className="mt-12 text-center text-xs text-[#78716C]">
+          <p>
+            Codzienną witrynę deserów i aktualne smaki ciast publikujemy na bieżąco na{" "}
             <a
               href="https://www.facebook.com/profile.php?id=61586213099245"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#C9956B] font-semibold hover:underline text-sm self-start"
+              className="text-[#8C6239] font-semibold underline hover:text-[#1C1917] transition-colors"
             >
-              Aktualne menu na Facebooku →
+              Facebooku Kawiarni Kawałek →
             </a>
-          </div>
+          </p>
         </div>
       </div>
     </section>

@@ -4,38 +4,47 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2A1A0E] text-[#F5E6D3] py-12 px-4 sm:px-6">
+    <footer className="bg-[#1C1917] text-[#FAF7F2] py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="grid sm:grid-cols-3 gap-8 pb-8 border-b border-[#6B3A1F]/40">
+        <div className="grid sm:grid-cols-3 gap-10 pb-12 border-b border-[#332D27]">
           {/* Brand */}
-          <div className="flex flex-col items-start gap-3">
+          <div className="flex flex-col items-start gap-4">
             <div className="flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Kawiarnia Kawałek logo"
-                width={40}
-                height={40}
+                width={48}
+                height={48}
                 className="rounded-full object-contain"
               />
-              <span className="font-serif text-xl font-bold text-[#F5E6D3]">Kawałek</span>
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-semibold text-[#FAF7F2]">
+                  Kawałek
+                </span>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[#D4AF37]">
+                  Kawiarnia & Cukiernia
+                </span>
+              </div>
             </div>
-            <p className="text-[#C9956B] text-sm leading-relaxed">
-              Kawiarnia rzemieślnicza<br />w sercu Zielonki
+            <p className="text-[#A89F95] text-sm leading-relaxed font-light">
+              Rzemieślnicza kawiarnia i pracownia tortów w sercu Zielonki. Ciepłe desery, domowe wypieki i chwila wytchnienia.
             </p>
           </div>
 
           {/* Address */}
           <div>
-            <p className="font-serif text-base font-bold mb-3 text-[#C9956B]">Adres</p>
-            <address className="not-italic text-sm text-[#F5E6D3]/80 space-y-1">
+            <p className="font-serif text-lg font-semibold mb-3 text-[#FAF7F2]">
+              Lokalizacja
+            </p>
+            <address className="not-italic text-sm text-[#A89F95] space-y-1.5 font-light">
               <p>ul. Marecka 17</p>
               <p>05-220 Zielonka</p>
-              <p className="mt-2">
+              <p className="pt-2">
                 <a
                   href="tel:509708434"
-                  className="hover:text-[#C9956B] transition-colors"
+                  className="text-[#FAF7F2] font-medium hover:text-[#D4AF37] transition-colors"
                 >
-                  509 708 434
+                  Tel: 509 708 434
                 </a>
               </p>
             </address>
@@ -43,25 +52,28 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <p className="font-serif text-base font-bold mb-3 text-[#C9956B]">Znajdź nas</p>
-            <ul className="space-y-2">
+            <p className="font-serif text-lg font-semibold mb-3 text-[#FAF7F2]">
+              Social Media & Kontakt
+            </p>
+            <ul className="space-y-2.5 text-sm text-[#A89F95] font-light">
               <li>
                 <a
                   href="https://www.facebook.com/profile.php?id=61586213099245"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-[#F5E6D3]/80 hover:text-[#C9956B] transition-colors"
+                  className="hover:text-[#D4AF37] transition-colors inline-flex items-center gap-2"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                  >
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                  Facebook
+                  Facebook: Kawiarnia Kawałek →
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/torty.u.kaski"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#D4AF37] transition-colors inline-flex items-center gap-2"
+                >
+                  Instagram: @torty.u.kaski →
                 </a>
               </li>
               <li>
@@ -69,22 +81,9 @@ export default function Footer() {
                   href="https://maps.app.goo.gl/zkoZs64mFszs4NBY6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-[#F5E6D3]/80 hover:text-[#C9956B] transition-colors"
+                  className="hover:text-[#D4AF37] transition-colors inline-flex items-center gap-2"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.003 3.5-4.697 3.5-8.867a8 8 0 10-16 0c0 4.17 1.555 6.864 3.5 8.867a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Google Maps
+                  Google Maps: Nawiguj do lokalu →
                 </a>
               </li>
             </ul>
@@ -92,8 +91,9 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="pt-6 text-center text-xs text-[#F5E6D3]/40">
-          © {year} Kawiarnia Kawałek, Zielonka. Wszelkie prawa zastrzeżone.
+        <div className="pt-8 text-center text-xs text-[#78716C] flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p>© {year} Kawiarnia Kawałek & Torty u Kaśki · Zielonka, ul. Marecka 17.</p>
+          <p className="text-[#A89F95]">Wszelkie prawa zastrzeżone.</p>
         </div>
       </div>
     </footer>

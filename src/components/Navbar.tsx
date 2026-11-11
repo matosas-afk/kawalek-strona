@@ -5,10 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "#oferty-specjalne", label: "Oferty" },
-  { href: "#menu", label: "Menu" },
-  { href: "#torty", label: "Torty" },
-  { href: "#galeria", label: "Galeria" },
+  { href: "#desery-na-cieplo", label: "Desery na ciepło" },
+  { href: "#torty", label: "Torty okolicznościowe" },
+  { href: "#swieta", label: "Oferta świąteczna" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
@@ -16,32 +15,38 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#3D2817]/95 backdrop-blur-sm shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F7F2E6]/95 backdrop-blur-md border-b border-[#D5CBB9]/60 shadow-xs">
       <nav
-        className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between"
         aria-label="Nawigacja główna"
       >
-        {/* Logo */}
-        <Link href="#hero" className="flex items-center gap-2 shrink-0">
+        {/* Logo - Official Kawałek Brand Mark */}
+        <Link href="#hero" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo.png"
             alt="Kawiarnia Kawałek — logo"
             width={48}
             height={48}
-            className="rounded-full object-contain"
+            className="object-contain drop-shadow-xs w-11 h-11 sm:w-12 sm:h-12"
+            priority
           />
-          <span className="text-[#F5E6D3] font-serif text-xl font-bold hidden sm:block tracking-wide">
-            Kawałek
-          </span>
+          <div className="flex flex-col">
+            <span className="text-[#1C1917] font-serif text-xl sm:text-2xl font-bold tracking-wider leading-none">
+              KAWAŁEK
+            </span>
+            <span className="text-[#9E7247] text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold mt-0.5">
+              Kawiarnia i Cukiernia
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop nav links */}
-        <ul className="hidden md:flex items-center gap-5 lg:gap-7">
+        {/* Desktop nav links - matching concept 1:1 */}
+        <ul className="hidden md:flex items-center gap-7 lg:gap-9">
           {links.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
-                className="text-[#F5E6D3] hover:text-[#C9956B] transition-colors duration-200 font-medium text-sm tracking-wide"
+                className="text-[#2E2824] hover:text-[#9E7247] transition-colors duration-200 font-medium text-sm tracking-wide"
               >
                 {label}
               </a>
@@ -49,16 +54,16 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA phone */}
+        {/* Right CTA for desktop - pill with phone icon matching concept */}
         <a
           href="tel:509708434"
-          className="hidden md:inline-flex items-center gap-2 bg-[#C9956B] hover:bg-[#A8784F] text-[#FDF8F4] px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200"
+          className="hidden md:inline-flex items-center gap-2 bg-[#EADBCA] hover:bg-[#DEC8B3] text-[#4A3525] border border-[#D5C2AD] px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 shadow-xs"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-4 h-4"
+            className="w-4 h-4 text-[#9E7247]"
             aria-hidden="true"
           >
             <path
@@ -70,41 +75,63 @@ export default function Navbar() {
           509 708 434
         </a>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-[#F5E6D3] p-2"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Zamknij menu" : "Otwórz menu"}
-          aria-expanded={open}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-            aria-hidden="true"
+        {/* Mobile quick actions: call pill + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="tel:509708434"
+            className="inline-flex items-center gap-1.5 bg-[#EADBCA] text-[#4A3525] border border-[#D5C2AD] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-xs"
+            aria-label="Zadzwoń do Kawałka"
           >
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-            )}
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-3.5 h-3.5 text-[#9E7247]"
+              aria-hidden="true"
+            >
+              <path
+                fillRule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span>509 708 434</span>
+          </a>
+          <button
+            className="text-[#2E2824] p-2"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Zamknij menu" : "Otwórz menu"}
+            aria-expanded={open}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6"
+              aria-hidden="true"
+            >
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown menu */}
       {open && (
-        <div className="md:hidden bg-[#3D2817] border-t border-[#6B3A1F] px-4 pb-4">
+        <div className="md:hidden bg-[#F7F2E6] border-t border-[#D5CBB9]/60 px-4 pb-6 shadow-lg">
           <ul className="flex flex-col gap-1 pt-2">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <a
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-[#F5E6D3] hover:text-[#C9956B] font-medium transition-colors"
+                  className="block py-3 text-[#2E2824] hover:text-[#9E7247] font-medium border-b border-[#D5CBB9]/40 transition-colors"
                 >
                   {label}
                 </a>
@@ -113,7 +140,7 @@ export default function Navbar() {
             <li>
               <a
                 href="tel:509708434"
-                className="mt-2 flex items-center gap-2 bg-[#C9956B] text-[#FDF8F4] px-4 py-3 rounded-full text-sm font-semibold justify-center"
+                className="mt-4 flex items-center gap-2 bg-[#9E7247] text-white px-4 py-3.5 rounded-full text-sm font-semibold justify-center shadow-xs"
               >
                 Zadzwoń: 509 708 434
               </a>

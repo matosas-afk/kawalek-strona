@@ -3,7 +3,7 @@ const reviews = [
     id: 1,
     author: "Kasia K.",
     rating: 5,
-    text: "Polecam przyjazne miejsce na mapie Zielonki! Ogromny plus za opcje bez cukru w normalnych cenach. Ciasto z bananem (wegańskie) i rafaello (bez cukru) — te wersje bez cukru dostają ode mnie dodatkowego plusa za to, że nie są ciężkie i przesłodzone. Kawa w przystępnej cenie. Póki co Kawałek to nr 1 u mnie!",
+    text: "Polecam przyjazne miejsce na mapie Zielonki! Ogromny plus za opcje bez cukru w normalnych cenach. Ciasto z bananem (wegańskie) i rafaello (bez cukru) — te wersje bez cukru nie są ciężkie i przesłodzone. Kawa w przystępnej cenie. Póki co Kawałek to nr 1 u mnie!",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const reviews = [
     id: 3,
     author: "Patrycja B.",
     rating: 5,
-    text: "To miejsce totalnie mnie kupiło! Widać od razu, że Pani Kasia robi to z serca — wszystko jest dopracowane, świeże i po prostu przepyszne. Na rodzinne okazje i bez okazji będę wracać właśnie tutaj. Specjalnie wybiorę się z Marek do Zielonki, żeby zjeść coś słodkiego u Pani Kasi. Z całego serca polecam!",
+    text: "To miejsce totalnie mnie kupiło! Widać od razu, że Pani Kasia robi to z serca — wszystko jest dopracowane, świeże i po prostu przepyszne. Na rodzinne okazje i bez okazji będę wracać właśnie tutaj. Specjalnie wybiorę się z Marek do Zielonki, żeby zjeść coś słodkiego u Pani Kasi.",
   },
   {
     id: 4,
@@ -47,8 +47,8 @@ function Stars({ count }: Readonly<{ count: number }>) {
           key={position}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
-          fill="#C9956B"
-          className="w-5 h-5"
+          fill="#D4AF37"
+          className="w-4 h-4"
           aria-hidden="true"
         >
           <path
@@ -66,18 +66,21 @@ export default function Reviews() {
   return (
     <section
       id="opinie"
-      className="bg-[#3D2817] py-20 px-4 sm:px-6 scroll-mt-16"
-      aria-label="Opinie klientów"
+      className="py-16 md:py-24 px-4 sm:px-6 bg-[#FAF7F2] border-t border-[#ECE6DC] scroll-mt-20"
+      aria-label="Opinie gości o Kawiarni Kawałek"
     >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <span className="text-[#C9956B] text-sm tracking-[0.3em] uppercase font-medium">
-            Co mówią goście
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-[#8C6239] text-xs tracking-[0.25em] uppercase font-semibold block mb-2">
+            Głos naszych gości
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl text-[#F5E6D3] mt-3 leading-tight">
-            Opinie
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C1917] font-semibold leading-tight">
+            Opinie z Zielonki i okolic
           </h2>
+          <p className="text-[#57534E] text-base mt-3">
+            Oto co mówią o nas goście, którzy odwiedzili lokal przy ul. Mareckiej 17.
+          </p>
         </div>
 
         {/* Grid */}
@@ -85,28 +88,32 @@ export default function Reviews() {
           {reviews.map((review) => (
             <article
               key={review.id}
-              className="bg-[#FDF8F4] rounded-2xl p-6 shadow-lg flex flex-col gap-4"
+              className="bg-[#FFFFFF] border border-[#ECE6DC] rounded-2xl p-6 shadow-2xs flex flex-col justify-between hover:border-[#8C6239] transition-colors duration-200"
             >
-              <Stars count={review.rating} />
-              <blockquote className="text-[#3D2817] leading-relaxed text-sm flex-1">
-                &ldquo;{review.text}&rdquo;
-              </blockquote>
-              <footer className="text-[#C9956B] text-sm font-semibold">
-                — {review.author}
+              <div>
+                <div className="mb-3">
+                  <Stars count={review.rating} />
+                </div>
+                <blockquote className="text-[#57534E] text-sm leading-relaxed font-light">
+                  &ldquo;{review.text}&rdquo;
+                </blockquote>
+              </div>
+              <footer className="mt-5 pt-3 border-t border-[#F3ECE2] text-xs font-semibold text-[#1C1917]">
+                {review.author}
               </footer>
             </article>
           ))}
         </div>
 
         {/* CTA to Google */}
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <a
             href="https://maps.app.goo.gl/zkoZs64mFszs4NBY6"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-2 border-[#C9956B] text-[#C9956B] hover:bg-[#C9956B] hover:text-[#FDF8F4] px-6 py-3 rounded-full text-sm font-semibold transition-colors duration-200"
+            className="inline-flex items-center gap-2 border border-[#1C1917] hover:bg-[#1C1917] hover:text-[#FAF7F2] text-[#1C1917] px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200"
           >
-            Wszystkie opinie w Google Maps
+            Zobacz wszystkie opinie w Google Maps →
           </a>
         </div>
       </div>

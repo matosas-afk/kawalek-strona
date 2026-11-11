@@ -1,115 +1,123 @@
 import Image from "next/image";
 
-// Tiny blurred preview of the hero photo (16px webp) — shown instantly while the
-// full image loads, so the section never paints blank (improves Speed Index).
-const HERO_BLUR =
-  "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAQCdASoQAAsABABoJbACdADpt16GAAD+grrMh0+I97V9GAaPE7Iv8kU7YapTVqY484g2uxBx17YqzL9/UJhRg8YXv4C/fO+4bSjjA8XoQhIYk3RyCRXWkh5/YfE3d8L2eXQA";
-
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative pt-20 pb-4 sm:pt-24 md:pt-28 md:pb-12 bg-[#F7F2E6] overflow-hidden"
       aria-label="Sekcja główna"
     >
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero_witryna_deserow.jpg"
-          alt="Witryna pełna domowych deserów — beza Pavlova, sernik z truskawkami i makaroniki — kawiarnia Kawałek Zielonka"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-          quality={50}
-          placeholder="blur"
-          blurDataURL={HERO_BLUR}
-        />
-        {/* Dark warm overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#3D2817]/70 via-[#3D2817]/50 to-[#3D2817]/80" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto">
-        {/* Decorative line */}
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <span className="h-px w-16 bg-[#C9956B]" aria-hidden="true" />
-          <span className="text-[#C9956B] text-sm tracking-[0.3em] uppercase font-medium">
-            Kawiarnia
-          </span>
-          <span className="h-px w-16 bg-[#C9956B]" aria-hidden="true" />
-        </div>
-
-        <h1 className="font-serif text-7xl sm:text-8xl md:text-9xl font-bold text-[#F5E6D3] leading-tight mb-4">
-          Kawałek
-        </h1>
-
-        <p className="font-serif text-xl sm:text-2xl text-[#C9956B] italic mb-6">
-          Kawa, ciasto i chwila dla Ciebie
-        </p>
-
-        <p className="text-[#F5E6D3]/90 text-base sm:text-lg mb-10 font-light">
-          ul. Marecka 17, Zielonka · Wt–Pt 12:00–19:00 · Sob–Nd 10:00–18:00
-        </p>
-
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="tel:509708434"
-            className="inline-flex items-center gap-2 bg-[#C9956B] hover:bg-[#A8784F] text-[#FDF8F4] px-8 py-4 rounded-full text-base font-semibold transition-colors duration-200 shadow-lg w-full sm:w-auto justify-center"
+      {/* Vintage Inset Frame */}
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6">
+        <div className="relative border border-[#D5CBB9] rounded-2xl md:rounded-3xl overflow-hidden bg-[#F7F2E6]/50">
+          {/* Botanical Corner Leaves (Top-Left) */}
+          <div
+            className="absolute top-0 left-0 w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 pointer-events-none select-none z-10"
+            aria-hidden="true"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-5 h-5"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Zadzwoń
-          </a>
-          <a
-            href="https://maps.app.goo.gl/zkoZs64mFszs4NBY6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-2 border-[#F5E6D3] hover:bg-[#F5E6D3]/10 text-[#F5E6D3] px-8 py-4 rounded-full text-base font-semibold transition-colors duration-200 w-full sm:w-auto justify-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-5 h-5"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.003 3.5-4.697 3.5-8.867a8 8 0 10-16 0c0 4.17 1.555 6.864 3.5 8.867a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Znajdź nas
-          </a>
-        </div>
-      </div>
+            <Image
+              src="/images/leaves_top_left.png"
+              alt=""
+              fill
+              className="object-contain object-top-left"
+              priority
+            />
+          </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#C9956B"
-          strokeWidth={2}
-          className="w-6 h-6"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
+          {/* Botanical Corner Leaves (Bottom-Left) */}
+          <div
+            className="absolute bottom-0 left-0 w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-40 pointer-events-none select-none z-10"
+            aria-hidden="true"
+          >
+            <Image
+              src="/images/leaves_bottom_left.png"
+              alt=""
+              fill
+              className="object-contain object-bottom-left"
+            />
+          </div>
+
+          {/* MOBILE VIEW (matches concept aesthetic with full artwork) */}
+          <div className="block lg:hidden text-center px-4 pt-10 pb-4 relative z-20">
+            <h1 className="font-serif text-[#9E7247] text-3xl sm:text-4xl font-semibold leading-[1.18] tracking-tight">
+              Kawa, domowe ciasto<br />i chwila dla Ciebie
+            </h1>
+
+            <p className="text-[#2E2824] text-sm sm:text-base leading-relaxed mt-3 mb-6 max-w-sm sm:max-w-md mx-auto">
+              Gorąca szarlotka z lodami, złociste naleśniki i chwila relaksu w Zielonce.
+            </p>
+
+            <div className="flex flex-row items-center justify-center gap-3 w-full sm:w-auto mb-4">
+              <a
+                href="#desery-na-cieplo"
+                className="inline-flex items-center justify-center bg-[#9E7247] hover:bg-[#855F3A] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 shadow-sm text-center"
+              >
+                Zobacz nasze desery
+              </a>
+              <a
+                href="tel:509708434"
+                className="inline-flex items-center justify-center border-2 border-[#9E7247] hover:bg-[#EADBCA]/60 text-[#2E2824] bg-[#F7F2E6] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-200 text-center"
+              >
+                Zadzwoń do nas
+              </a>
+            </div>
+
+            {/* Seamless Panoramic Culinary Illustration */}
+            <div className="w-full relative mt-2">
+              <Image
+                src="/images/hero_culinary_art_clean.png"
+                alt="Rzemieślnicze desery w kawiarni Kawałek — ciepła szarlotka z lodami waniliowymi, czekoladowy fondant, naleśniki z serem i świeżo parzona kawa"
+                width={856}
+                height={768}
+                priority
+                className="w-full h-auto object-contain mx-auto"
+              />
+            </div>
+          </div>
+
+          {/* DESKTOP VIEW (recreates desktop concept 1:1) */}
+          <div className="hidden lg:grid lg:grid-cols-12 min-h-[580px] xl:min-h-[640px] items-center relative z-20">
+            {/* Left Column: Copy & Actions */}
+            <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-start text-left pl-12 xl:pl-16 pr-4 py-12">
+              <h1 className="font-serif text-[#9E7247] text-4xl xl:text-5xl 2xl:text-6xl font-semibold leading-[1.12] mb-5 tracking-tight">
+                Kawa, domowe ciasto<br />i chwila dla Ciebie
+              </h1>
+
+              <p className="text-[#2E2824] text-base xl:text-lg leading-relaxed mb-8 max-w-lg font-normal">
+                Gorąca szarlotka z lodami, złociste naleśniki i chwila wytchnienia przy świeżo parzonej kawie w Zielonce.
+              </p>
+
+              <div className="flex items-center gap-4">
+                <a
+                  href="#desery-na-cieplo"
+                  className="inline-flex items-center justify-center bg-[#9E7247] hover:bg-[#855F3A] text-white px-7 py-3.5 rounded-full text-sm font-semibold transition-colors duration-200 shadow-sm"
+                >
+                  Zobacz nasze desery
+                </a>
+                <a
+                  href="tel:509708434"
+                  className="inline-flex items-center justify-center border-2 border-[#9E7247] hover:bg-[#EADBCA]/60 text-[#2E2824] px-7 py-3.5 rounded-full text-sm font-semibold transition-colors duration-200"
+                >
+                  Zadzwoń do nas
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Full Panoramic Culinary Illustration */}
+            <div className="lg:col-span-7 xl:col-span-7 relative h-full flex items-center justify-end">
+              <div className="relative w-full h-[520px] xl:h-[600px]">
+                <Image
+                  src="/images/hero_culinary_art_clean.png"
+                  alt="Rzemieślnicze desery w kawiarni Kawałek — ciepła szarlotka z lodami, czekoladowy fondant, naleśniki z serem i owocami oraz kawa"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-contain object-right"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

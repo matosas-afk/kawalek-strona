@@ -1,5 +1,5 @@
 const hours = [
-  { day: "Poniedziałek", time: "zamknięte", closed: true },
+  { day: "Poniedziałek", time: "nieczynne", closed: true },
   { day: "Wtorek", time: "12:00 – 19:00" },
   { day: "Środa", time: "12:00 – 19:00" },
   { day: "Czwartek", time: "12:00 – 19:00" },
@@ -12,30 +12,33 @@ export default function Contact() {
   return (
     <section
       id="kontakt"
-      className="bg-[#F5E6D3] py-20 px-4 sm:px-6 scroll-mt-16"
+      className="py-16 md:py-24 px-4 sm:px-6 bg-[#FFFFFF] border-t border-[#ECE6DC] scroll-mt-20"
       aria-label="Kontakt i lokalizacja"
     >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <span className="text-[#C9956B] text-sm tracking-[0.3em] uppercase font-medium">
-            Jak nas znaleźć
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-[#8C6239] text-xs tracking-[0.25em] uppercase font-semibold block mb-2">
+            Odwiedź nas
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl text-[#3D2817] mt-3 leading-tight">
-            Kontakt
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C1917] font-semibold leading-tight">
+            Kontakt & Lokalizacja
           </h2>
+          <p className="text-[#57534E] text-base mt-3">
+            Czekamy na Ciebie w Zielonce przy ul. Mareckiej 17. Wpadnij na kawę lub zamów słodkości na wynos.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-12 items-start">
           {/* Left: Info */}
-          <div className="space-y-8">
-            {/* Address */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#3D2817] flex items-center justify-center shrink-0">
+          <div className="space-y-6">
+            {/* Address Card */}
+            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#ECE6DC] flex gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#EFE4D6] text-[#8C6239] flex items-center justify-center shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  fill="#C9956B"
+                  fill="currentColor"
                   className="w-6 h-6"
                   aria-hidden="true"
                 >
@@ -47,27 +50,26 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <p className="font-serif text-lg font-bold text-[#3D2817]">Adres</p>
-                <p className="text-[#6B3A1F]">ul. Marecka 17</p>
-                <p className="text-[#6B3A1F]">05-220 Zielonka</p>
+                <h3 className="font-serif text-lg font-bold text-[#1C1917]">Adres Kawiarni</h3>
+                <p className="text-[#57534E] text-sm mt-0.5">ul. Marecka 17, 05-220 Zielonka</p>
                 <a
                   href="https://maps.app.goo.gl/zkoZs64mFszs4NBY6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C9956B] text-sm font-medium hover:underline mt-1 inline-block"
+                  className="text-[#8C6239] text-xs font-semibold hover:underline mt-2 inline-block"
                 >
-                  Otwórz w Google Maps →
+                  Otwórz trasę w Google Maps →
                 </a>
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#3D2817] flex items-center justify-center shrink-0">
+            {/* Phone Card */}
+            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#ECE6DC] flex gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#EFE4D6] text-[#8C6239] flex items-center justify-center shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  fill="#C9956B"
+                  fill="currentColor"
                   className="w-6 h-6"
                   aria-hidden="true"
                 >
@@ -79,59 +81,45 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <p className="font-serif text-lg font-bold text-[#3D2817]">Telefon</p>
+                <h3 className="font-serif text-lg font-bold text-[#1C1917]">Telefon & Zamówienia</h3>
                 <a
                   href="tel:509708434"
-                  className="text-[#6B3A1F] hover:text-[#C9956B] transition-colors text-lg font-medium"
+                  className="text-[#8C6239] hover:text-[#1C1917] transition-colors text-lg font-semibold block mt-0.5"
                 >
                   509 708 434
                 </a>
+                <p className="text-xs text-[#78716C] mt-1">
+                  Rezerwacje ciast, tortów okolicznościowych i zamówień świątecznych
+                </p>
               </div>
             </div>
 
-            {/* Hours */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#3D2817] flex items-center justify-center shrink-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="#C9956B"
-                  className="w-6 h-6"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <p className="font-serif text-lg font-bold text-[#3D2817] mb-3">
-                  Godziny otwarcia
-                </p>
-                <table className="w-full text-sm" aria-label="Godziny otwarcia kawiarni">
-                  <tbody>
-                    {hours.map(({ day, time, closed }) => (
-                      <tr key={day} className="border-b border-[#C9956B]/20 last:border-0">
-                        <td className="py-1.5 pr-4 text-[#3D2817] font-medium">{day}</td>
-                        <td
-                          className={`py-1.5 ${
-                            closed ? "text-[#A8784F] italic" : "text-[#6B3A1F]"
-                          }`}
-                        >
-                          {time}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            {/* Hours Card */}
+            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#ECE6DC]">
+              <h3 className="font-serif text-lg font-bold text-[#1C1917] mb-3">
+                Godziny otwarcia
+              </h3>
+              <table className="w-full text-sm" aria-label="Godziny otwarcia kawiarni">
+                <tbody>
+                  {hours.map(({ day, time, closed }) => (
+                    <tr key={day} className="border-b border-[#ECE6DC]/60 last:border-0">
+                      <td className="py-2 pr-4 text-[#1C1917] font-medium">{day}</td>
+                      <td
+                        className={`py-2 text-right ${
+                          closed ? "text-[#9C8979] italic" : "text-[#57534E] font-medium"
+                        }`}
+                      >
+                        {time}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
           {/* Right: Map */}
-          <div className="rounded-2xl overflow-hidden shadow-lg h-[450px]">
+          <div className="rounded-3xl overflow-hidden shadow-md border border-[#ECE6DC] h-[460px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9756.972404051141!2d21.1464647!3d52.3115911!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecf87ea846e3d%3A0x812738c5c192b8f8!2zS2F3YcWCZWs!5e0!3m2!1spl!2spl!4v1776961352979!5m2!1spl!2spl"
               width="100%"

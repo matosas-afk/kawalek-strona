@@ -6,9 +6,10 @@ import { useState } from "react";
 
 const links = [
   { href: "#oferty-specjalne", label: "Oferty" },
+  { href: "#desery-na-cieplo", label: "Desery na ciepło" },
+  { href: "#swieta", label: "Święta 2026" },
   { href: "#menu", label: "Menu" },
   { href: "#torty", label: "Torty" },
-  { href: "#galeria", label: "Galeria" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

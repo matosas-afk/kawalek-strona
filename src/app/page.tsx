@@ -3,9 +3,9 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import SpecialOffers from "@/components/SpecialOffers";
 import DeseryNaCieplo from "@/components/DeseryNaCieplo";
+import HolidaySpecials from "@/components/HolidaySpecials";
 import Menu from "@/components/Menu";
 import TortySection from "@/components/TortySection";
-import Gallery from "@/components/Gallery";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -16,14 +16,14 @@ export default function Home() {
     <>
       <JsonLd />
       <Navbar />
-      <main>
+      <main className="bg-[#FAF7F2]">
         <Hero />
-        <About />
         <SpecialOffers />
         <DeseryNaCieplo />
+        <HolidaySpecials />
         <Menu />
         <TortySection />
-        <Gallery />
+        <About />
         <Reviews />
         <Contact />
       </main>
